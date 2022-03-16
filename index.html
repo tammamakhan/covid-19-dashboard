@@ -6,8 +6,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Covid-19 Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
 
-  <body></body>
+  <body>
+    <!-- header -->
+    <header>
+      <h1>
+        <a href="./index.html">Covid-19 Dashboard</a>
+      </h1>
+
+      <!-- navbar -->
+      <nav>
+        <ul>
+          <li>
+            <a href="#data">Data</a>
+          </li>
+          <li>
+            <a href="#newsfeed">Newsfeed</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- main content section -->
+    <main class="page-content">
+      <!-- user input section -->
+      <section class="user-input" id="user-input">
+        <!-- country select input -->
+        <div class="country-input field">
+          <p class="control">
+            <span class="select">
+              <select>
+                <option selected>Country</option>
+                <option>US</option>
+              </select>
+            </span>
+          </p>
+        </div>
+
+        <!-- graph type select input -->
+        <div class="graph-input field">
+          <p class="control">
+            <span class="select">
+              <select>
+                <option selected>Graph</option>
+                <option>Total Cases</option>
+                <option>New Cases</option>
+              </select>
+            </span>
+          </p>
+        </div>
+
+        <!-- data type select input -->
+        <div class="data-type-input field">
+          <p class="control">
+            <span class="select">
+              <select>
+                <option selected>Data Type</option>
+                <option>Cases</option>
+                <option>Deaths</option>
+              </select>
+            </span>
+          </p>
+        </div>
+
+        <!-- submit form button-->
+        <div class="control">
+          <button class="button is-primary">Submit</button>
+        </div>
+      </section>
+
+      <!-- data section -->
+      <section class="data" id="data">
+        <!-- section title -->
+        <div class="section-title">
+          <h2>Recent Data</h2>
+        </div>
+
+        <!-- cases/deaths data -->
+        <div class="data-container">
+          <div class="global-data data-item">
+            <p>Global cases/deaths:</p>
+          </div>
+          <div class="country-data data-item">
+            <p>Country cases/deaths:</p>
+          </div>
+        </div>
+
+        <!-- graph data -->
+        <div class="graph-container">
+          <iframe
+            src="https://public.domo.com/cards/dG1jy"
+            width="100%"
+            height="600"
+            marginheight="0"
+            marginwidth="0"
+            frameborder="0"
+          ></iframe>
+        </div>
+      </section>
+
+      <!-- newsfeed section -->
+      <section class="newsfeed" id="newsfeed">
+        <!-- section title -->
+        <div class="section-title">
+          <h2>Newsfeed</h2>
+        </div>
+
+        <!-- news items section -->
+        <div class="news-container">
+          <div class="card" style="width: 18rem">
+            <img src="..." class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Article Title</h5>
+              <p class="card-text">Description</p>
+              <a href="#" class="btn btn-primary">Link</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        <p>disclaimer</p>
+      </div>
+    </footer>
+
+    <script src="./assets/js/script.js"></script>
+  </body>
 </html>
