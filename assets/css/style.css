@@ -39,6 +39,14 @@ a {
 }
 
 /* user input */
+.input-container {
+  display: flex;
+  justify-content: center;
+}
+
+.input-container div {
+  padding: 50px 50px;
+}
 
 /* data */
 .data-container {
