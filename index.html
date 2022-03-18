@@ -15,7 +15,7 @@
 
   <body>
     <!-- header -->
-    <section class="header">
+    <section class="header mb-5">
       <h1>
         <a href="./index.html">Covid-19 Dashboard</a>
       </h1>
@@ -35,82 +35,102 @@
 
     <!-- main content section -->
     <main class="page-content">
+      <!--  -->
+      <div class="container">
       <!-- user input section -->
-      <section class="user-input" id="user-input">
-        <!-- section title -->
-        <h2 class="title has-text-centered border box">Search Criteria</h2>
+        <section class="user-input section border box" id="user-input">
+          <!-- section title -->
+          <h2 class="title is-1 has-text-centered ">Search Criteria</h2>
 
-        <!-- country select input -->
-        <div class="input-container">
-          <div class="country-input field">
-            <p class="control">
-              <span class="select">
-                <select>
-                  <option selected>Country</option>
-                  <option>US</option>
-                </select>
-              </span>
-            </p>
-          </div>
+          <!-- country select input -->
+          <div class="input-container">
+            <div class="country-input field">
+              <p class="control">
+                <span class="select">
+                  <select>
+                    <option selected>Country</option>
+                    <option>US</option>
+                  </select>
+                </span>
+              </p>
+            </div>
 
-          <!-- graph type select input -->
-          <div class="graph-input field">
-            <p class="control">
-              <span class="select">
-                <select>
-                  <option selected>Graph</option>
-                  <option>Total Cases</option>
-                  <option>New Cases</option>
-                </select>
-              </span>
-            </p>
-          </div>
+            <!-- graph type select input -->
+            <div class="graph-input field">
+              <p class="control">
+                <span class="select">
+                  <select>
+                    <option selected>Graph</option>
+                    <option>Total Cases</option>
+                    <option>New Cases</option>
+                  </select>
+                </span>
+              </p>
+            </div>
 
-          <!-- data type select input -->
-          <div class="data-type-input field">
-            <p class="control">
-              <span class="select">
-                <select>
-                  <option selected>Data Type</option>
-                  <option>Cases</option>
-                  <option>Deaths</option>
-                </select>
-              </span>
-            </p>
-          </div>
+            <!-- data type select input -->
+            <div class="data-type-input field">
+              <p class="control">
+                <span class="select">
+                  <select>
+                    <option selected>Data Type</option>
+                    <option>Cases</option>
+                    <option>Deaths</option>
+                  </select>
+                </span>
+              </p>
+            </div>
 
-          <!-- submit form button-->
-          <div class="control">
-            <button class="button is-primary">Submit</button>
+            <!-- submit form button-->
+            <div class="control">
+              <button class="button is-primary">Submit</button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <!-- data section -->
-      <section class="data" id="data">
+      <section class="section" id="data">
         <!-- section title -->
-        <h2 class="title has-text-centered border box">Recent Data</h2>
+        
 
-        <!-- cases/deaths data -->
-        <div class="data-container">
-          <div class="global-data data-item">
-            <p>Global cases/deaths:</p>
-          </div>
-          <div class="country-data data-item">
-            <p>Country cases/deaths:</p>
-          </div>
-        </div>
+        <div class="container">
+          
+          <div class="card p-1">
+            <h2 class="title is-1 has-text-centered mt-5">Recent Data</h2>
+            <!-- cases/deaths data -->
+            <div class="row is-4 is-flex is-justify-content-space-evenly">
 
-        <!-- graph data -->
-        <div class="graph-container">
-          <iframe
-            src="https://public.domo.com/cards/dG1jy"
-            width="100%"
-            height="600"
-            marginheight="0"
-            marginwidth="0"
-            frameborder="0"
-          ></iframe>
+              <div class="message mt-5 mb-5">
+                <div class="message-header">
+                  <p>Global Cases/Deaths:</p>
+                </div>
+                <div class="message-body">
+                  0
+                </div>
+              </div>
+
+              <div class="message mt-5 mb-5">
+                <div class="message-header">
+                  <p>Country Cases/Deaths:</p>
+                </div>
+                <div class="message-body">
+                  0
+                </div>
+              </div>
+
+            </div>
+            <!-- graph data -->
+            <iframe
+              src="https://public.domo.com/cards/dG1jy"
+              width="100%"
+              height="600"
+              marginheight="0"
+              marginwidth="0"
+              frameborder="0">
+            </iframe>
+          </div>
+
         </div>
       </section>
 
@@ -118,7 +138,7 @@
       <section class="section" id="newsfeed">
         <div class="container">
           <!-- section title -->
-          <h2 class="title has-text-centered border box">Newsfeed</h2>
+          <h2 class="title is-1 has-text-centered border box mt-1 mb-1">Newsfeed</h2>
 
           <!-- news items section -->
           <div class="columns p-1">
@@ -276,9 +296,9 @@
       </section>
     </main>
 
-    <footer>
+    <footer class="footer">
       <div>
-        <p>disclaimer</p>
+        <p></p>
       </div>
     </footer>
 

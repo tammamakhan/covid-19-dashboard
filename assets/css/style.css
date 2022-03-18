@@ -1,7 +1,9 @@
 /* variables */
 
 /* global */
-
+* {
+  font-family: sans-serif;
+}
 /* header */
 .header {
   padding: 20px;
@@ -53,18 +55,6 @@ a {
   display: flex;
 }
 
-.data-item {
-  flex: 1;
-  background-color: lightblue;
-  margin: 0 150px;
-  border: 0;
-  border-radius: 30px;
-  text-align: center;
-}
-
-.data-item p {
-  margin: 50px 0;
-}
 
 .graph-container {
   margin: 75px 150px;
