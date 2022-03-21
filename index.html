@@ -43,13 +43,13 @@
           <h2 class="title is-1 has-text-centered ">Search Criteria</h2>
 
           <!-- country select input -->
+          <form id="search-form">
           <div class="input-container">
             <div class="country-input field">
               <p class="control">
                 <span class="select">
-                  <select>
-                    <option selected>Country</option>
-                    <option>US</option>
+                  <select required id="countries">
+                    <option value="">Select a country</option>
                   </select>
                 </span>
               </p>
@@ -59,10 +59,10 @@
             <div class="graph-input field">
               <p class="control">
                 <span class="select">
-                  <select>
-                    <option selected>Graph</option>
-                    <option>Total Cases</option>
-                    <option>New Cases</option>
+                  <select required id="graph" >
+                    <option value="">Graph</option>
+                    <option value="total">Total Cases</option>
+                    <option value="new">New Cases</option>
                   </select>
                 </span>
               </p>
@@ -72,10 +72,10 @@
             <div class="data-type-input field">
               <p class="control">
                 <span class="select">
-                  <select>
-                    <option selected>Data Type</option>
-                    <option>Cases</option>
-                    <option>Deaths</option>
+                  <select required id="dataType">
+                    <option value="">Data Type</option>
+                    <option value="cases" >Cases</option>
+                    <option value="deaths" >Deaths</option>
                   </select>
                 </span>
               </p>
@@ -86,6 +86,7 @@
               <button class="button is-primary">Submit</button>
             </div>
           </div>
+        </form>
         </section>
       </div>
 
@@ -105,7 +106,7 @@
                 <div class="message-header">
                   <p>Global Cases/Deaths:</p>
                 </div>
-                <div class="message-body">
+                <div class="message-body" id="globalCases">
                   0
                 </div>
               </div>
@@ -114,7 +115,7 @@
                 <div class="message-header">
                   <p>Country Cases/Deaths:</p>
                 </div>
-                <div class="message-body">
+                <div class="message-body" id="countryCases">
                   0
                 </div>
               </div>
