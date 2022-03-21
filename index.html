@@ -38,33 +38,26 @@
     <main class="page-content">
       <!--  -->
       <div class="container">
-      <!-- user input section -->
+        <!-- user input section -->
         <section class="user-input section border box" id="user-input">
           <!-- section title -->
-          <h2 class="title is-1 has-text-centered ">Search Criteria</h2>
+          <h2 class="title is-1 has-text-centered">Search Criteria</h2>
 
           <!-- country select input -->
           <div class="input-container">
             <div class="country-input field">
               <p class="control">
                 <span class="select">
-                  <select>
-                    <option selected>Country</option>
-                    <option>US</option>
-                  </select>
+                  <select name="country"></select>
                 </span>
               </p>
             </div>
 
             <!-- graph type select input -->
-            <div class="graph-input field">
+            <div class="graph-type-input field">
               <p class="control">
                 <span class="select">
-                  <select>
-                    <option selected>Graph</option>
-                    <option>Total Cases</option>
-                    <option>New Cases</option>
-                  </select>
+                  <select name="graph-type"></select>
                 </span>
               </p>
             </div>
@@ -73,18 +66,14 @@
             <div class="data-type-input field">
               <p class="control">
                 <span class="select">
-                  <select>
-                    <option selected>Data Type</option>
-                    <option>Cases</option>
-                    <option>Deaths</option>
-                  </select>
+                  <select name="data-type"></select>
                 </span>
               </p>
             </div>
 
             <!-- submit form button-->
             <div class="control">
-              <button class="button is-primary">Submit</button>
+              <button class="button is-primary" id="submit-form">Submit</button>
             </div>
           </div>
         </section>
@@ -93,33 +82,25 @@
       <!-- data section -->
       <section class="section" id="data">
         <!-- section title -->
-        
 
         <div class="container">
-          
           <div class="card p-1">
             <h2 class="title is-1 has-text-centered mt-5">Recent Data</h2>
             <!-- cases/deaths data -->
             <div class="row is-4 is-flex is-justify-content-space-evenly">
-
               <div class="message mt-5 mb-5">
                 <div class="message-header">
                   <p>Global Cases/Deaths:</p>
                 </div>
-                <div class="message-body">
-                  0
-                </div>
+                <div class="message-body">0</div>
               </div>
 
               <div class="message mt-5 mb-5">
                 <div class="message-header">
                   <p>Country Cases/Deaths:</p>
                 </div>
-                <div class="message-body">
-                  0
-                </div>
+                <div class="message-body">0</div>
               </div>
-
             </div>
             <!-- graph data -->
             <iframe
@@ -128,10 +109,10 @@
               height="600"
               marginheight="0"
               marginwidth="0"
-              frameborder="0">
+              frameborder="0"
+            >
             </iframe>
           </div>
-
         </div>
       </section>
 
@@ -143,7 +124,6 @@
 
           <!-- news items section -->
           <div class="columns p-1">
-
             <!-- CARD 1 -->
             <div class="card p-1 m-2">
               <div class="card-image">
@@ -303,8 +283,6 @@
                 </footer>
               </div>
             </div>
-
-            
           </div>
         </div>
       </section>
