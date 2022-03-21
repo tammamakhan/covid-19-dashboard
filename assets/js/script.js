@@ -54,13 +54,13 @@ function newsCardCreator(data) {
     card_div_figure.classList.add('card-image')
     card_div.append(card_div_figure)
 
-    var card_figure = document.createElement('figure')
+    var card_figure = document.createElement('feature')
     card_figure.classList.add('image', 'is-4by3')
-    card_div_figure.append('card_figure')
+    card_div_figure.append(card_figure)
 
     var card_image = document.createElement('img')
     card_image.src = data.articles[i].urlToImage
-    card_figure.append(card_image)
+    card_figure.appendChild(card_image)
 
     // Card Titles and Content
     var card_content_div = document.createElement('div')
