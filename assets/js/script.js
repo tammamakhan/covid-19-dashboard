@@ -14,26 +14,26 @@ var params = {
 
 var countryISO = [
   {
-    name: 'United States',
-    iso: 'us'
+    name: "United States",
+    iso: "us",
   },
   {
-    name: 'Canada',
-    iso: 'ca'
+    name: "Canada",
+    iso: "ca",
   },
   {
-    name: 'United Kingdom',
-    iso: 'uk'
+    name: "United Kingdom",
+    iso: "uk",
   },
   {
-    name: 'Argentina',
-    iso: 'ar'
+    name: "Argentina",
+    iso: "ar",
   },
   {
-    name: 'South Korea',
-    iso: 'kr'
+    name: "South Korea",
+    iso: "kr",
   },
-]
+];
 
 var inputFormHandler = function () {
   // Get the user input values
@@ -121,16 +121,18 @@ function getSelectedGraph() {
 
 // function to update news location based on search
 function updateCountryNews() {
-  countryISO.
-    filter(function(item){ 
-    return item.name === document.querySelector("select[name='country']").value; 
-    }).
-    map(function(item){
+  countryISO
+    .filter(function (item) {
+      return (
+        item.name === document.querySelector("select[name='country']").value
+      );
+    })
+    .map(function (item) {
       params.country = item.iso;
     });
-  console.log(params)
-  newsReset()
-  getNewsAPI()
+  console.log(params);
+  newsReset();
+  getNewsAPI();
 }
 
 function getNewsAPI() {
@@ -151,7 +153,6 @@ function getNewsAPI() {
     })
     .catch((error) => console.log("error", error));
 }
-
 
 function newsCardCreator(data) {
   var cardCount = data.totalResults;
@@ -223,13 +224,13 @@ function newsCardCreator(data) {
 function newsReset() {
   var card_container = document.getElementById("cards");
   while (card_container.lastElementChild) {
-    card_container.removeChild(card_container.lastElementChild)
+    card_container.removeChild(card_container.lastElementChild);
   }
 
-  var card_main = document.getElementById('card-container')
-  card_container.classList.add('column', 'is-desktop', 'p-1')
-  card_container.id = "cards"
-  card_main.append(card_container)
+  var card_main = document.getElementById("card-container");
+  card_container.classList.add("column", "is-desktop", "p-1");
+  card_container.id = "cards";
+  card_main.append(card_container);
 }
 
 var saveUserInput = function () {
@@ -245,12 +246,15 @@ var loadUserInput = function () {
 };
 
 submitEl.addEventListener("click", () => {
-  inputFormHandler
+  inputFormHandler;
 });
 
-document.querySelector("select[name='country']").addEventListener('change', function() {
-  updateCountryNews();
-})
+document
+  .querySelector("select[name='country']")
+  .addEventListener("change", function () {
+    updateCountryNews();
+  });
+
 getNewsAPI();
 loadUserInput();
 createInputChoices();
