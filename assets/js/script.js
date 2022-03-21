@@ -5,26 +5,30 @@ var countryInput, graphTypeInput, dataTypeInput, newsAPIKey, newsLink
 //           NEWS API          //
 /////////////////////////////////
 
+var params = {
+  // update params object to change country
+  country: "ca",
+  q: 'covid',
+  include_similar: 'true',
+  // need to add date time getter
+  // from: '2022-03-19',
+  totalResults: "5",
+  apiKey: '4c2773d12e684f40b1fe0aa0e6487e74'
+};
+
 function getNewsAPI() {
   
-  var params = {
-    q: 'covid',
-    pageSize: '5',
-    include_similar: 'false',
-    // need to add date time getter
-    from: '2022-03-19',
-    apiKey: '4c2773d12e684f40b1fe0aa0e6487e74'
-  };
+
   
   // demo api search 
-  // https://newsapi.org/v2/everything?q=covid&include_similar=false&pageSize=5&from=2022-03-18&apiKey=4c2773d12e684f40b1fe0aa0e6487e74
+  // https://newsapi.org/v2/top-headlines?q=covid&include_similar=false&pageSize=5&from=2022-03-18&apiKey=4c2773d12e684f40b1fe0aa0e6487e74
 
   var esc = encodeURIComponent;
   var query = Object.keys(params)
     .map(function(k) {return esc(k) + '=' + esc(params[k]);})
     .join('&');
   
-  fetch("https://newsapi.org/v2/everything?" + query)
+  fetch("https://newsapi.org/v2/top-headlines?" + query)
     .then(response => response.json())
     .then(data => {
       newsCardUpdator(data);
