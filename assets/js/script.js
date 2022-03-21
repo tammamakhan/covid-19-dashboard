@@ -12,6 +12,29 @@ var params = {
   apiKey: "4c2773d12e684f40b1fe0aa0e6487e74",
 };
 
+var countryISO = [
+  {
+    name: 'United States',
+    iso: 'us'
+  },
+  {
+    name: 'Canada',
+    iso: 'ca'
+  },
+  {
+    name: 'United Kingdom',
+    iso: 'uk'
+  },
+  {
+    name: 'Argentina',
+    iso: 'ar'
+  },
+  {
+    name: 'South Korea',
+    iso: 'kr'
+  },
+]
+
 var inputFormHandler = function () {
   // Get the user input values
   var country = document.querySelector("select[name='country']").value;
@@ -34,11 +57,11 @@ var createInputChoices = function () {
   // Create options for countries
   var countrySelectEl = document.querySelector("select[name='country']");
   var countryOptions = ["US", "Bangladesh", "Canada"];
-  for (var i = 0; i < countryOptions.length; i++) {
+  for (var i = 0; i < countryISO.length; i++) {
     // Create option element
     var optionEl = document.createElement("option");
-    optionEl.textContent = countryOptions[i];
-    optionEl.setAttribute("value", countryOptions[i]);
+    optionEl.textContent = countryISO[i].name;
+    optionEl.setAttribute("value", countryISO[i].name);
 
     // Append to select
     countrySelectEl.appendChild(optionEl);
@@ -96,6 +119,20 @@ function getSelectedGraph() {
   }
 }
 
+// function to update news location based on search
+function updateCountryNews() {
+  countryISO.
+    filter(function(item){ 
+    return item.name === document.querySelector("select[name='country']").value; 
+    }).
+    map(function(item){
+      params.country = item.iso;
+    });
+  console.log(params)
+  newsReset()
+  getNewsAPI()
+}
+
 function getNewsAPI() {
   // demo api search
   // https://newsapi.org/v2/top-headlines?q=covid&include_similar=false&pageSize=5&from=2022-03-18&apiKey=4c2773d12e684f40b1fe0aa0e6487e74
@@ -110,14 +147,11 @@ function getNewsAPI() {
   fetch("https://newsapi.org/v2/top-headlines?" + query)
     .then((response) => response.json())
     .then((data) => {
-      newsCardUpdator(data);
+      newsCardCreator(data);
     })
     .catch((error) => console.log("error", error));
 }
 
-function newsCardUpdator(data) {
-  newsCardCreator(data);
-}
 
 function newsCardCreator(data) {
   var cardCount = data.totalResults;
@@ -186,6 +220,18 @@ function newsCardCreator(data) {
   }
 }
 
+function newsReset() {
+  var card_container = document.getElementById("cards");
+  while (card_container.lastElementChild) {
+    card_container.removeChild(card_container.lastElementChild)
+  }
+
+  var card_main = document.getElementById('card-container')
+  card_container.classList.add('column', 'is-desktop', 'p-1')
+  card_container.id = "cards"
+  card_main.append(card_container)
+}
+
 var saveUserInput = function () {
   localStorage.setItem("country", JSON.stringify(countryInput));
   localStorage.setItem("graphType", JSON.stringify(graphTypeInput));
@@ -198,7 +244,13 @@ var loadUserInput = function () {
   dataTypeInput = localStorage.getItem("dataType");
 };
 
-submitEl.addEventListener("click", inputFormHandler);
+submitEl.addEventListener("click", () => {
+  inputFormHandler
+});
+
+document.querySelector("select[name='country']").addEventListener('change', function() {
+  updateCountryNews();
+})
 getNewsAPI();
 loadUserInput();
 createInputChoices();
