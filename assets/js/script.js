@@ -28,8 +28,6 @@ var inputFormHandler = function () {
 
   // Save user input to local storage
   saveUserInput();
-
-  console.log("Submitted");
 };
 
 var createInputChoices = function () {
@@ -84,10 +82,11 @@ function getNewsAPI() {
     })
     .join("&");
 
-  fetch("https://newsapi.org/v2/top-headlines?" + query)
+  fetch("https://newsapi.org/v2/everything?" + query, requestOptions)
     .then((response) => response.json())
+    .then((result) => console.log(result))
     .then((data) => {
-      newsCardUpdator(data);
+      newsCardCreator(data);
     })
     .catch((error) => console.log("error", error));
 }
@@ -158,6 +157,10 @@ function newsCardUpdatorV1(data) {
   for (let i = 0; i < cardList.length; i++) {}
 }
 
+function newsCardCreator(data) {
+  var cardTitle = document.getElementById("card_img_1");
+}
+
 var saveUserInput = function () {
   localStorage.setItem("country", JSON.stringify(countryInput));
   localStorage.setItem("graphType", JSON.stringify(graphTypeInput));
@@ -171,6 +174,6 @@ var loadUserInput = function () {
 };
 
 submitEl.addEventListener("click", inputFormHandler);
-// getNewsAPI();
+getNewsAPI();
 loadUserInput();
 createInputChoices();
