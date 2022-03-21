@@ -2,7 +2,7 @@ var countryInput = "";
 var graphTypeInput = "";
 var dataTypeInput = "";
 var newsLink = "";
-newsAPIKey = "";
+var newsAPIKey = "";
 var submitEl = document.querySelector("#submit-form");
 var params = {
   // update params object to change country
@@ -174,6 +174,6 @@ var loadUserInput = function () {
 };
 
 submitEl.addEventListener("click", inputFormHandler);
-getNewsAPI();
+//getNewsAPI();
 loadUserInput();
 createInputChoices();
