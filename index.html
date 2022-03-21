@@ -11,7 +11,6 @@
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
 
   <body>
@@ -38,33 +37,26 @@
     <main class="page-content">
       <!--  -->
       <div class="container">
-      <!-- user input section -->
+        <!-- user input section -->
         <section class="user-input section border box" id="user-input">
           <!-- section title -->
-          <h2 class="title is-1 has-text-centered ">Search Criteria</h2>
+          <h2 class="title is-1 has-text-centered">Search Criteria</h2>
 
           <!-- country select input -->
           <div class="input-container">
             <div class="country-input field">
               <p class="control">
                 <span class="select">
-                  <select>
-                    <option selected>Country</option>
-                    <option>US</option>
-                  </select>
+                  <select name="country"></select>
                 </span>
               </p>
             </div>
 
             <!-- graph type select input -->
-            <div class="graph-input field">
+            <div class="graph-type-input field">
               <p class="control">
                 <span class="select">
-                  <select>
-                    <option selected>Graph</option>
-                    <option>Total Cases</option>
-                    <option>New Cases</option>
-                  </select>
+                  <select name="graph-type"></select>
                 </span>
               </p>
             </div>
@@ -73,18 +65,14 @@
             <div class="data-type-input field">
               <p class="control">
                 <span class="select">
-                  <select>
-                    <option selected>Data Type</option>
-                    <option>Cases</option>
-                    <option>Deaths</option>
-                  </select>
+                  <select name="data-type"></select>
                 </span>
               </p>
             </div>
 
             <!-- submit form button-->
             <div class="control">
-              <button class="button is-primary">Submit</button>
+              <button class="button is-primary" id="submit-form">Submit</button>
             </div>
           </div>
         </section>
@@ -93,45 +81,38 @@
       <!-- data section -->
       <section class="section" id="data">
         <!-- section title -->
-        
 
         <div class="container">
-          
           <div class="card p-1">
             <h2 class="title is-1 has-text-centered mt-5">Recent Data</h2>
             <!-- cases/deaths data -->
             <div class="row is-4 is-flex is-justify-content-space-evenly">
-
               <div class="message mt-5 mb-5">
                 <div class="message-header">
                   <p>Global Cases/Deaths:</p>
                 </div>
-                <div class="message-body">
-                  0
-                </div>
+                <div class="message-body">0</div>
               </div>
 
               <div class="message mt-5 mb-5">
                 <div class="message-header">
                   <p>Country Cases/Deaths:</p>
                 </div>
-                <div class="message-body">
-                  0
-                </div>
+                <div class="message-body">0</div>
               </div>
-
             </div>
             <!-- graph data -->
             <iframe
+              id="graph-frame"
               src="https://public.domo.com/cards/dG1jy"
               width="100%"
               height="600"
               marginheight="0"
               marginwidth="0"
-              frameborder="0">
+              frameborder="0"
+            >
             </iframe>
           </div>
-
         </div>
       </section>
 
@@ -142,28 +123,24 @@
           <h2 class="title is-1 has-text-centered border box mt-1">Newsfeed</h2>
 
           <!-- news items section -->
-          <div class="columns p-1" id="cards">
-
-            <!-- CARD 1 Structure -->
-            <!-- <div class="card p-1 m-2">
+          <div class="columns p-1">
+            <div class="card p-1 m-2">
               <div class="card-image">
                 <figure class="image is-4by3">
                   <img
                     src="https://bulma.io/images/placeholders/1280x960.png"
                     alt="Placeholder image"
-                    id="card_img_1"
                   />
                 </figure>
               </div>
-
               <div class="card-content">
                 <div class="media">
                   <div class="media-content">
-                    <p class="title is-4" id="card-1-title">Article Title</p>
+                    <p class="title is-4">Article Title</p>
                     <p class="subtitle is-6">subtitle</p>
                   </div>
                 </div>
-                <div class="content" id="card-1-content">
+                <div class="content">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic,
                   praesentium eligendi sed qui ex repellendus eius nisi
                   aspernatur magni vitae sunt ipsa sint explicabo libero saepe
@@ -172,11 +149,130 @@
                   <time datetime="">00:00</time>
                 </div>
                 <footer class="card-footer-item">
-                  <a href="#" target="_blank" id="card-1-link">link</a>
+                  <a href="#">link</a>
                 </footer>
               </div>
-            </div> -->
+            </div>
 
+            <div class="card p-1 m-2">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img
+                    src="https://bulma.io/images/placeholders/1280x960.png"
+                    alt="Placeholder image"
+                  />
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="title is-4">Article Title</p>
+                    <p class="subtitle is-6">subtitle</p>
+                  </div>
+                </div>
+                <div class="content">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic,
+                  praesentium eligendi sed qui ex repellendus eius nisi
+                  aspernatur magni vitae sunt ipsa sint explicabo libero saepe
+                  cumque, rerum natus corporis.
+                  <br />
+                  <time datetime="">00:00</time>
+                </div>
+                <footer class="card-footer-item">
+                  <a href="#">link</a>
+                </footer>
+              </div>
+            </div>
+
+            <div class="card p-1 m-2">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img
+                    src="https://bulma.io/images/placeholders/1280x960.png"
+                    alt="Placeholder image"
+                  />
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="title is-4">Article Title</p>
+                    <p class="subtitle is-6">subtitle</p>
+                  </div>
+                </div>
+                <div class="content">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic,
+                  praesentium eligendi sed qui ex repellendus eius nisi
+                  aspernatur magni vitae sunt ipsa sint explicabo libero saepe
+                  cumque, rerum natus corporis.
+                  <br />
+                  <time datetime="">00:00</time>
+                </div>
+                <footer class="card-footer-item">
+                  <a href="#">link</a>
+                </footer>
+              </div>
+            </div>
+
+            <div class="card p-1 m-2">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img
+                    src="https://bulma.io/images/placeholders/1280x960.png"
+                    alt="Placeholder image"
+                  />
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="title is-4">Article Title</p>
+                    <p class="subtitle is-6">subtitle</p>
+                  </div>
+                </div>
+                <div class="content">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic,
+                  praesentium eligendi sed qui ex repellendus eius nisi
+                  aspernatur magni vitae sunt ipsa sint explicabo libero saepe
+                  cumque, rerum natus corporis.
+                  <br />
+                  <time datetime="">00:00</time>
+                </div>
+                <footer class="card-footer-item">
+                  <a href="#">link</a>
+                </footer>
+              </div>
+            </div>
+
+            <div class="card p-1 m-2">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img
+                    src="https://bulma.io/images/placeholders/1280x960.png"
+                    alt="Placeholder image"
+                  />
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="title is-4">Article Title</p>
+                    <p class="subtitle is-6">subtitle</p>
+                  </div>
+                </div>
+                <div class="content">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic,
+                  praesentium eligendi sed qui ex repellendus eius nisi
+                  aspernatur magni vitae sunt ipsa sint explicabo libero saepe
+                  cumque, rerum natus corporis.
+                  <br />
+                  <time datetime="">00:00</time>
+                </div>
+                <footer class="card-footer-item">
+                  <a href="#">link</a>
+                </footer>
+              </div>
+            </div>
           </div>
         </div>
       </section>
