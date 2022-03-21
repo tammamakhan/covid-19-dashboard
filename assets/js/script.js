@@ -28,6 +28,9 @@ var inputFormHandler = function () {
 
   // Save user input to local storage
   saveUserInput();
+
+  // Update the displayed graph
+  getSelectedGraph();
 };
 
 var createInputChoices = function () {
@@ -46,7 +49,13 @@ var createInputChoices = function () {
 
   // Create options for graph type
   var graphTypeSelectEl = document.querySelector("select[name='graph-type']");
-  var graphTypeOptions = ["Total Cases", "New Cases"];
+  var graphTypeOptions = [
+    "Total Cases",
+    "Total Confirmed Cases",
+    "New Cases",
+    "Key Metrics",
+    "Covid-19 Details",
+  ];
   for (var i = 0; i < graphTypeOptions.length; i++) {
     // Create option element
     var optionEl = document.createElement("option");
@@ -70,6 +79,25 @@ var createInputChoices = function () {
     dataTypeSelectEl.appendChild(optionEl);
   }
 };
+
+function getSelectedGraph() {
+  if (graphTypeInput == "Total Confirmed Cases") {
+    document.getElementById("graph-frame").src =
+      "https://public.domo.com/cards/dwoBJ";
+  } else if (graphTypeInput == "Total Cases") {
+    document.getElementById("graph-frame").src =
+      "https://public.domo.com/cards/dG1jy";
+  } else if (graphTypeInput == "New Cases") {
+    document.getElementById("graph-frame").src =
+      "https://public.domo.com/cards/aKg4r";
+  } else if (graphTypeInput == "Key Metrics") {
+    document.getElementById("graph-frame").src =
+      "https://public.domo.com/cards/aOm4g";
+  } else if (graphTypeInput == "Covid-19 Details") {
+    document.getElementById("graph-frame").src =
+      "https://public.domo.com/cards/aOm4g";
+  }
+}
 
 function getNewsAPI() {
   // demo api search
