@@ -213,7 +213,7 @@ function newsCardCreator(data) {
     card_content_div.append(card_footer);
 
     var card_link_a = document.createElement("a");
-    card_link_a.innerHTML = "Link";
+    card_link_a.innerHTML = "View Article";
     card_link_a.target = "_blank";
     card_link_a.href = data.articles[i].url;
     card_footer.append(card_link_a);
