@@ -205,3 +205,4 @@ submitEl.addEventListener("click", inputFormHandler);
 //getNewsAPI();
 loadUserInput();
 createInputChoices();
+getSelectedGraph();
