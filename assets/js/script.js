@@ -52,6 +52,9 @@ var inputFormHandler = function () {
   // Update the displayed graph
   getSelectedGraph();
 
+  // Update the displayed global data
+  getGlobalData();
+
   // Update newsfeed
   updateCountryNews();
 };
@@ -124,6 +127,24 @@ var createInputChoices = function () {
       dataTypeSelectEl.appendChild(optionEl);
     }
   }
+};
+
+var getGlobalData = function () {
+  fetch("https://covid19.mathdro.id/api").then(function (response) {
+    if (response.ok) {
+      response.json().then(function (data) {
+        var globalDataTitleEl = document.querySelector("#global-data-title");
+        var globalDataEl = document.querySelector("#global-data");
+        if (dataTypeInput === "Deaths") {
+          globalDataTitleEl.innerHTML = "Global Deaths";
+          globalDataEl.innerHTML = data.deaths.value;
+        } else {
+          globalDataTitleEl.innerHTML = "Global Cases";
+          globalDataEl.innerHTML = data.confirmed.value;
+        }
+      });
+    }
+  });
 };
 
 function getSelectedGraph() {
@@ -276,3 +297,4 @@ getNewsAPI();
 loadUserInput();
 createInputChoices();
 getSelectedGraph();
+getGlobalData();
