@@ -37,8 +37,8 @@
     <main class="page-content">
       <!--  -->
       <div class="container">
-      <!-- user input section -->
-        <section class="user-input section border box p-0 m-0" id="user-input">
+        <!-- user input section -->
+        <section class="user-input section border box" id="user-input">
           <!-- section title -->
           <h2 class="title is-1 has-text-centered">Search Criteria</h2>
 
@@ -89,16 +89,9 @@
             <div class="row is-4 is-flex is-justify-content-space-evenly">
               <div class="message mt-5 mb-5">
                 <div class="message-header">
-                  <p>Global Cases/Deaths:</p>
+                  <p id="global-data-title"></p>
                 </div>
-                <div class="message-body">0</div>
-              </div>
-
-              <div class="message mt-5 mb-5">
-                <div class="message-header">
-                  <p>Country Cases/Deaths:</p>
-                </div>
-                <div class="message-body">0</div>
+                <div class="message-body" id="global-data"></div>
               </div>
             </div>
             <!-- graph data -->
@@ -118,7 +111,7 @@
 
       <!-- newsfeed section -->
       <section class="section" id="newsfeed">
-        <div class="container" id="card-container">
+        <div class="container">
           <!-- section title -->
           <h2 class="title is-1 has-text-centered border box mt-1">Newsfeed</h2>
 
