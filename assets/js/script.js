@@ -1,6 +1,6 @@
-var countryInput = "";
-var graphTypeInput = "";
-var dataTypeInput = "";
+var countryInput = "United States";
+var graphTypeInput = "Total Cases";
+var dataTypeInput = "Cases";
 var newsLink = "";
 var newsAPIKey = "";
 var submitEl = document.querySelector("#submit-form");
@@ -51,20 +51,30 @@ var inputFormHandler = function () {
 
   // Update the displayed graph
   getSelectedGraph();
+
+  // Update newsfeed
+  updateCountryNews();
 };
 
 var createInputChoices = function () {
   // Create options for countries
   var countrySelectEl = document.querySelector("select[name='country']");
-  var countryOptions = ["US", "Bangladesh", "Canada"];
+  if (countryInput) {
+    var selectedCountryEl = document.createElement("option");
+    selectedCountryEl.textContent = countryInput;
+    selectedCountryEl.setAttribute("value", countryInput);
+    countrySelectEl.appendChild(selectedCountryEl);
+  }
   for (var i = 0; i < countryISO.length; i++) {
-    // Create option element
-    var optionEl = document.createElement("option");
-    optionEl.textContent = countryISO[i].name;
-    optionEl.setAttribute("value", countryISO[i].name);
+    if (countryISO[i].name !== countryInput) {
+      // Create option element
+      var optionEl = document.createElement("option");
+      optionEl.textContent = countryISO[i].name;
+      optionEl.setAttribute("value", countryISO[i].name);
 
-    // Append to select
-    countrySelectEl.appendChild(optionEl);
+      // Append to select
+      countrySelectEl.appendChild(optionEl);
+    }
   }
 
   // Create options for graph type
@@ -76,27 +86,43 @@ var createInputChoices = function () {
     "Key Metrics",
     "Covid-19 Details",
   ];
+  if (graphTypeInput) {
+    var selectedGraphEl = document.createElement("option");
+    selectedGraphEl.textContent = graphTypeInput;
+    selectedGraphEl.setAttribute("value", graphTypeInput);
+    graphTypeSelectEl.appendChild(selectedGraphEl);
+  }
   for (var i = 0; i < graphTypeOptions.length; i++) {
-    // Create option element
-    var optionEl = document.createElement("option");
-    optionEl.textContent = graphTypeOptions[i];
-    optionEl.setAttribute("value", graphTypeOptions[i]);
+    if (graphTypeOptions[i] !== graphTypeInput) {
+      // Create option element
+      var optionEl = document.createElement("option");
+      optionEl.textContent = graphTypeOptions[i];
+      optionEl.setAttribute("value", graphTypeOptions[i]);
 
-    // Append to select
-    graphTypeSelectEl.appendChild(optionEl);
+      // Append to select
+      graphTypeSelectEl.appendChild(optionEl);
+    }
   }
 
   // Create options for data type
   var dataTypeSelectEl = document.querySelector("select[name='data-type']");
   var dataTypeOptions = ["Cases", "Deaths"];
+  if (dataTypeInput) {
+    var selectedDataEl = document.createElement("option");
+    selectedDataEl.textContent = dataTypeInput;
+    selectedDataEl.setAttribute("value", dataTypeInput);
+    dataTypeSelectEl.appendChild(selectedDataEl);
+  }
   for (var i = 0; i < dataTypeOptions.length; i++) {
-    // Create option element
-    var optionEl = document.createElement("option");
-    optionEl.textContent = dataTypeOptions[i];
-    optionEl.setAttribute("value", dataTypeOptions[i]);
+    if (dataTypeOptions[i] !== dataTypeInput) {
+      // Create option element
+      var optionEl = document.createElement("option");
+      optionEl.textContent = dataTypeOptions[i];
+      optionEl.setAttribute("value", dataTypeOptions[i]);
 
-    // Append to select
-    dataTypeSelectEl.appendChild(optionEl);
+      // Append to select
+      dataTypeSelectEl.appendChild(optionEl);
+    }
   }
 };
 
@@ -119,7 +145,6 @@ function getSelectedGraph() {
   }
 }
 
-// function to update news location based on search
 function updateCountryNews() {
   countryISO
     .filter(function (item) {
@@ -240,20 +265,12 @@ var saveUserInput = function () {
 };
 
 var loadUserInput = function () {
-  countryInput = localStorage.getItem("country");
-  graphTypeInput = localStorage.getItem("graphType");
-  dataTypeInput = localStorage.getItem("dataType");
+  countryInput = JSON.parse(localStorage.getItem("country"));
+  graphTypeInput = JSON.parse(localStorage.getItem("graphType"));
+  dataTypeInput = JSON.parse(localStorage.getItem("dataType"));
 };
 
-submitEl.addEventListener("click", () => {
-  inputFormHandler;
-});
-
-document
-  .querySelector("select[name='country']")
-  .addEventListener("change", function () {
-    updateCountryNews();
-  });
+submitEl.addEventListener("click", inputFormHandler);
 
 getNewsAPI();
 loadUserInput();
